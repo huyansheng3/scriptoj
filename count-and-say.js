@@ -77,11 +77,11 @@
 // console.timeEnd("countAndSay");
 
 let x = 0;
-var countAndSay = function(n) {
-  if (n === 1) return "1";
+var countAndSay = function(n, list = ["0", "1"]) {
+  if (list[n]) return list[n];
   else {
     x++;
-    const prev = countAndSay(n - 1);
+    const prev = countAndSay(n - 1, list);
     let ret = "",
       curr = -1,
       count = 0;
@@ -98,6 +98,7 @@ var countAndSay = function(n) {
         ret += `${count}${curr}`;
       }
     }
+    list[n] = ret;
     return ret;
   }
 };
