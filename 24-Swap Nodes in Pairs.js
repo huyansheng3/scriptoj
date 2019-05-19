@@ -27,20 +27,17 @@ function ListNode(val) {
 //     let pointer = head
 
 //     while (pointer && pointer.next) {
-
-//         debugger
+//         // n1  n2  rest
 
 //         let first = pointer
 //         let rest = pointer.next.next
 
-//         head = head.next
+//         head = head.next  // ->
 //         head.next = first
 //         head.next.next = rest
 
-//         pointer = rest
+//         pointer = pointer.next.next
 //     }
-
-//     debugger
 
 //     return dummy.next
 // };
@@ -93,16 +90,4 @@ console.log(l1)
 
 console.log(swapPairs(l1))
 
-
-
-const l1 = new ListNode(1)
-l1.next = new ListNode(2)
-l1.next.next = new ListNode(3)
-l1.next.next.next = new ListNode(4)
-
-
-
-console.log(l1)
-
-console.log(swapPairs(l1))
 
