@@ -2,21 +2,23 @@
 
 function Pall(fns, limit) {
     const indexFns = fns.map((fn, index)=> [fn, index])
+    let pengingTask = 0, ret = [], len=fns.length, count = 0
 
     return new Promise((resolve, reject)=>{
-        let pengingTask = 0, ret = []
-
         function consume() {
             if(pengingTask < limit) {
                 const [fn, index] = indexFns.shift()
                 if(fn) {
                     pengingTask+=1
                     fn().then((res)=>{
-                        console.log(indexFns)
+                        count+=1
                         pengingTask-=1
                         ret[index] = res
-                        if(indexFns.length > 0) consume()
-                        else resolve(ret)
+                        if(indexFns.length > 0) {
+                            consume()
+                        } else if(count === len) {
+                            resolve(ret)
+                        }
                     })
                 }
             }
